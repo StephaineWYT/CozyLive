@@ -3,12 +3,45 @@
 <mapper namespace="wen.dao.IHouseDao">
 
     <select id="findFourHouseByType" parameterType="int" resultType="wen.pojo.HouseView">
-        SELECT * FROM tb_house a,tb_house_info b WHERE a.house_id=b.house_id AND a.is_delete=0 AND a.house_type=0 order by rand() LIMIT 4
+        select * from tb_house a,tb_house_info b
+        where a.house_id=b.house_id
+        and a.is_delete=0
+        and a.house_type=0
+        order by rand() LIMIT 4
     </select>
 
     <select id="searchHouseByType" parameterType="int" resultType="wen.pojo.HouseView">
-        select * from tb_house a,tb_house_info b,tb_user c where a.is_delete=0 and a.house_id=b.house_id
-        and a.user_id=c.user_id and a.house_type=#{houseType}
+        select * from tb_house a,tb_house_info b,tb_user c
+        where a.is_delete=0
+        and a.house_id=b.house_id
+        and a.user_id=c.user_id
+        and a.house_type=#{houseType}
         order by a.house_id desc
+    </select>
+
+    <select id="searchThreeRandomView" parameterType="int" resultType="wen.pojo.HouseView">
+        select * from tb_house a,tb_house_info b,tb_user c
+        where a.is_delete=0
+        and a.house_id=b.house_id
+        and a.user_id=c.user_id
+        and a.house_type=#{houseType}
+        order by rand() LIMIT 3
+    </select>
+
+    <select id="selectCount" parameterType="int" resultType="int">
+        select count(*) from tb_house a,tb_house_info b,tb_user c
+        where a.is_delete=0
+        and a.house_id=b.house_id
+        and a.user_id=c.user_id
+        and a.house_type=#{houseType}
+    </select>
+
+    <select id="searchHouseViewByTypeAndPage" parameterType="Map" resultType="wen.pojo.HouseView">
+        select * from tb_house a,tb_house_info b,tb_user c
+        where a.is_delete=0
+        and a.house_id=b.house_id
+        and a.user_id=c.user_id
+        and a.house_type=#{houseType}
+        order by a.house_id limit #{start},#{size}
     </select>
 </mapper>

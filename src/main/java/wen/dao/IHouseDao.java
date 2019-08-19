@@ -2,14 +2,15 @@ package wen.dao;
 
 import wen.pojo.HouseView;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface IHouseDao {
-    List<HouseView> findFourHouseByType(int housetype);
+    List<HouseView> findFourHouseByType(int houseType);
 
-    List<HouseView> searchHouseViewByType(int houseType);
+    List<HouseView> searchThreeRandomView(int houseType);
 
-    List<HouseView> searchThreeRandomView();
+    int selectCount(int houseType);
 
-    List<HouseView> searchHouseByType(int houseType);
+    List<HouseView> searchHouseViewByTypeAndPage(HashMap<String,Object> map);
 }

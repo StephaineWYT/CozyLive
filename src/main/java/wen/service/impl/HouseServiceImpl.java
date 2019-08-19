@@ -2,10 +2,12 @@ package wen.service.impl;
 
 import wen.dao.IHouseDao;
 import wen.pojo.HouseView;
+import wen.pojo.PageInfo;
 import wen.service.IHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -19,17 +21,32 @@ public class HouseServiceImpl implements IHouseService {
     }
 
     @Override
-    public List<HouseView> searchHouseViewByType(int houseType) {
-        return houseDao.searchHouseViewByType(houseType);
+    public List<HouseView> searchThreeRandomView(int houseType) {
+        return houseDao.searchThreeRandomView(houseType);
     }
 
     @Override
-    public List<HouseView> searchThreeRandomView() {
-        return houseDao.searchThreeRandomView();
-    }
+    public PageInfo<HouseView> searchHouseViewByType(int currentPage, int houseType) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("size", 5);
 
-    @Override
-    public List<HouseView> searchHouseByType(int houseType) {
-        return houseDao.searchHouseByType(houseType);
+        PageInfo<HouseView> pageInfo = new PageInfo<>();
+        pageInfo.setCurrentPage(currentPage);
+        pageInfo.setPageSize(5);
+
+        int count = houseDao.selectCount(houseType);
+        Double d = Double.valueOf(count);
+        Double num = Math.ceil(d / pageInfo.getPageSize());
+
+        pageInfo.setTotalPage(num.intValue());
+        pageInfo.setTotalCount(count);
+
+        map.put("start", (currentPage - 1) * pageInfo.getPageSize());
+        map.put("houseType", houseType);
+
+        List<HouseView> houseViews = houseDao.searchHouseViewByTypeAndPage(map);
+        pageInfo.setLists(houseViews);
+
+        return pageInfo;
     }
 }

@@ -1,17 +1,15 @@
 package wen.service;
 
 import wen.pojo.HouseView;
+import wen.pojo.PageInfo;
 
-import javax.enterprise.inject.Model;
 import java.util.List;
 
 public interface IHouseService {
     List<HouseView> findFourHouseByType(int houseType);
 
-    List<HouseView> searchHouseViewByType(int houseType);
+    List<HouseView> searchThreeRandomView(int houseType);
 
-    List<HouseView> searchThreeRandomView();
-
-    List<HouseView> searchHouseByType(int houseType);
+    PageInfo<HouseView> searchHouseViewByType(int currentPage, int houseType);
 
 }
