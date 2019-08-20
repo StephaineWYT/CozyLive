@@ -44,4 +44,11 @@
         and a.house_type=#{houseType}
         order by a.house_id limit #{start},#{size}
     </select>
+
+    <select id="searchDetailByHouseId" parameterType="int" resultType="wen.pojo.HouseView">
+        select * from tb_house, tb_house_info, tb_user
+        where tb_user.user_id = tb_house.user_id
+        and tb_house.house_id = tb_house_info.house_id
+        and tb_house.house_id = #{houseId}
+    </select>
 </mapper>

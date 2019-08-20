@@ -12,5 +12,7 @@ public interface IHouseDao {
 
     int selectCount(int houseType);
 
-    List<HouseView> searchHouseViewByTypeAndPage(HashMap<String,Object> map);
+    List<HouseView> searchHouseViewByTypeAndPage(HashMap<String, Object> map);
+
+    HouseView searchDetailByHouseId(int houseId);
 }

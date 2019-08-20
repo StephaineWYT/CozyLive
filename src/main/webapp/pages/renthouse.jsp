@@ -19,16 +19,11 @@
 
 <!--头部最上方的框-->
 <jsp:include page="../pages/basehead.jsp"></jsp:include>
-<!--头部最上方的框-->
 
-
-<%--<div class="content">--%>
 <div class="width1190">
-    <p style="font-size: 16px">当前位置：<a href="../index.jsp">首页</a> ＞＞ <a
-            href="#">租房</a></p>
+    <p style="font-size: 16px">当前位置：<a href="../index.jsp">首页</a> ＞＞ 租房</p>
 </div>
 
-<%--</div>--%>
 
 <%--房源列表--%>
 
@@ -41,18 +36,20 @@
                 <a href="javascript:;">价格 &or;</a>
                 <a href="javascript:;">最新 &or;</a>
             </div>
-        </form><!--pro-search/-->
-    </div><!--width1190/-->
+        </form>
+    </div>
     <div class="width1190">
         <div class="pro-left">
             <%--房屋信息分页显示--%>
             <c:forEach var="house" items="${pageInfo.lists}">
                 <dl>
-                    <dt><a href="#"><img
+                    <dt><a href="${pageContext.request.contextPath}/house/searchDetail.do?houseId=${house.houseId}"><img
                             src="http://image.cxhit.com/${house.houseHeadimg}" style="width:286px;height:188px"
                             width="286" height="188"/></a></dt>
                     <dd>
-                        <h3><a href="#">${house.houseTitle}</a></h3>
+                        <h3>
+                            <a href="${pageContext.request.contextPath}/house/searchDetail.do?houseId=${house.houseId}">${house.houseTitle}</a>
+                        </h3>
                         <div class="pro-wei">
                             <img src="../images/weizhi.png" width="12" height="16" style="width:12px;height:16px"/>
                             <strong class="red">${house.houseAddress}</strong>
@@ -93,19 +90,20 @@
                            aria-label="Next">尾页</a></li>
                 </ul>
             </div><!--底部分页栏-->
-        </div><!--pro-left/-->
+        </div>
 
         <div class="pro-right">
             <h2 class="right-title">推荐房源</h2>
             <div class="right-pro">
                 <c:forEach var="randomHouse" items="${randomHouses}">
                     <dl>
-                        <dt><a href="/house/todetails.do?house_id=${randomHouse.houseId}"><img
-                                src="http://image.cxhit.com/${randomHouse.houseHeadimg}"
-                                style="width: 135px; height: 88px"/></a></dt>
+                        <dt>
+                            <a href="${pageContext.request.contextPath}/house/searchDetail.do?houseId=${randomHouse.houseId}"><img
+                                    src="http://image.cxhit.com/${randomHouse.houseHeadimg}"
+                                    style="width: 135px; height: 88px"/></a></dt>
                         <dd>
                             <h3>
-                                <a href="/house/todetails.do?house_id=${randomHouse.houseId}">${randomHouse.houseTitle}</a>
+                                <a href="${pageContext.request.contextPath}/house/searchDetail.do?houseId=${randomHouse.houseId}">${randomHouse.houseTitle}</a>
                             </h3>
                             <div class="pro-fang">${randomHouse.houseLayout} ${randomHouse.houseArea}平
                                 朝${randomHouse.houseTurn}</div>
@@ -113,14 +111,12 @@
                         </dd>
                     </dl>
                 </c:forEach>
-            </div><!--right-pro/-->
-        </div><!--pro-right/-->
+            </div>
+        </div>
         <div class="clears"></div>
-    </div><!--width1190/-->
-</div><!--content/-->
+    </div>
+</div>
 
-<%--显示页脚--%>
-<!--这是页脚-->
 <jsp:include page="../pages/basefoot.jsp"></jsp:include>
 
 </body>

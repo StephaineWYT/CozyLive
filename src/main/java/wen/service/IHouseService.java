@@ -12,4 +12,5 @@ public interface IHouseService {
 
     PageInfo<HouseView> searchHouseViewByType(int currentPage, int houseType);
 
+    HouseView searchDetailByHouseId(int houseId);
 }

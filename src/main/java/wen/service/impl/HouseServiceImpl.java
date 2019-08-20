@@ -49,4 +49,9 @@ public class HouseServiceImpl implements IHouseService {
 
         return pageInfo;
     }
+
+    @Override
+    public HouseView searchDetailByHouseId(int houseId) {
+        return houseDao.searchDetailByHouseId(houseId);
+    }
 }

@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>页头</title>
-    <!--    下面是几个导入的包-->
     <link type="text/css" href="../css/css.css" rel="stylesheet"/>
     <script type="text/javascript" src="../js/js.js"></script>
 </head>
@@ -22,9 +21,8 @@
             <a href="javascript:;" onclick="" style="font-size: 14px">设为首页</a>
         </div>
         <div class="clears"></div>
-    </div><!--width1190/-->
+    </div>
 </div>
-<!--头部最上方的框-->
 
 <!--Logo栏和手机号栏-->
 <div class="logo-phone">
@@ -57,15 +55,14 @@
 
             </tr>
         </table>
-    </div><!--width1190/-->
-</div><!--logo-phone/-->
-<!--Logo栏和手机号栏-->
+    </div>
+</div>
 
 <!--导航栏-->
 <div class="list-nav">
     <div class="width1190">
         <ul class="nav">
-            <li><a href="index.jsp">首页</a></li>
+            <li><a href="http://localhost:8080/index.jsp">首页</a></li>
             <li>
                 <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=0&currentPage=1">新房</a>
             </li>
@@ -80,11 +77,10 @@
             <li><a href="#">公告中心</a></li>
             <li><a href="#">关于我们</a></li>
             <div class="clears"></div>
-        </ul><!--nav-->
+        </ul>
         <div class="clears"></div>
-    </div><!--width1190-->
-</div><!--list-nav-->
-<!--导航栏End-->
+    </div>
+</div>
 
 <br>
 

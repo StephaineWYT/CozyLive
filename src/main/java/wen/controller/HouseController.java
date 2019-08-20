@@ -63,4 +63,12 @@ public class HouseController {
         return mv;
     }
 
+    @RequestMapping("searchDetail.do")
+    public ModelAndView searchDetailByHouseId(int houseId) {
+        HouseView houseView = houseService.searchDetailByHouseId(houseId);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("houseView", houseView);
+        mv.setViewName("details");
+        return mv;
+    }
 }
