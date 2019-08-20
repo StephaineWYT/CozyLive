@@ -36,8 +36,8 @@
 
 <%--<div class="content">--%>
 <div class="width1190">
-    <p style="font-size: 16px">当前位置：<a href="../index.jsp">首页</a> ＞＞ <a
-            href="/house/searchHouseViewByType.do?house_type=0&page=1&size=6">新房房源</a></p>
+    <p style="font-size: 16px">当前位置：<a href="../index.jsp">首页</a> ＞＞
+        <a href="/house/searchHouseViewByType.do?house_type=0&page=1&size=6">新房房源</a></p>
 </div>
 
 <%--</div>--%>
@@ -58,7 +58,7 @@
     <div class="width1190">
         <div class="pro-left">
             <%--房屋信息分页显示--%>
-            <c:forEach var="house" items="${houses}">
+            <c:forEach var="house" items="${pageInfo.lists}">
                 <dl>
                     <dt><a href="#"><img
                             src="http://image.cxhit.com/${house.houseHeadimg}" style="width:286px;height:188px"
@@ -81,13 +81,28 @@
             <%--分页按钮--%>
             <div class="pull-right">
                 <ul class="pagination">
-                    <li><a href="#" aria-label="Previous">首页</a></li>
-                    <li><a href="#">上一页</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">下一页</a></li>
-                    <li><a href="#" aria-label="Next">尾页</a></li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=0&currentPage=1"
+                           aria-label="Previous">首页</a></li>
+                    <c:if test="${pageInfo.currentPage != 1}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=0&currentPage=${pageInfo.currentPage - 1}">上一页</a>
+                        </li>
+                    </c:if>
+
+                    <c:forEach begin="1" end="${pageInfo.totalPage}" var="i">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=0&currentPage=${i}">${i}</a>
+                        </li>
+                    </c:forEach>
+                    <c:if test="${pageInfo.currentPage != pageInfo.totalPage}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=0&currentPage=${pageInfo.currentPage + 1}">下一页</a>
+                        </li>
+                    </c:if>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=0&currentPage=${pageInfo.totalPage}"
+                           aria-label="Next">尾页</a></li>
                 </ul>
             </div><!--底部分页栏-->
         </div><!--pro-left/-->

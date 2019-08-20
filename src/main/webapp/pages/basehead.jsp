@@ -66,9 +66,15 @@
     <div class="width1190">
         <ul class="nav">
             <li><a href="index.jsp">首页</a></li>
-            <li><a href="#">新房</a></li>
-            <li><a href="#">二手房</a></li>
-            <li><a href="#">租房</a></li>
+            <li>
+                <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=0&currentPage=1">新房</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=1&currentPage=1">二手房</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=2&currentPage=1">租房</a>
+            </li>
             <li class="zhiding"><a href="#">指定购房</a></li>
             <li><a href="#">发布房源</a></li>
             <li><a href="#">公告中心</a></li>

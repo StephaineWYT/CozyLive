@@ -46,7 +46,7 @@
     <div class="width1190">
         <div class="pro-left">
             <%--房屋信息分页显示--%>
-            <c:forEach var="house" items="${renthouse}">
+            <c:forEach var="house" items="${pageInfo.lists}">
                 <dl>
                     <dt><a href="#"><img
                             src="http://image.cxhit.com/${house.houseHeadimg}" style="width:286px;height:188px"
@@ -69,13 +69,28 @@
             <%--分页按钮--%>
             <div class="pull-right">
                 <ul class="pagination">
-                    <li><a href="#" aria-label="Previous">首页</a></li>
-                    <li><a href="#">上一页</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">下一页</a></li>
-                    <li><a href="#" aria-label="Next">尾页</a></li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=1&currentPage=1"
+                           aria-label="Previous">首页</a></li>
+                    <c:if test="${pageInfo.currentPage != 1}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=1&currentPage=${pageInfo.currentPage - 1}">上一页</a>
+                        </li>
+                    </c:if>
+
+                    <c:forEach begin="1" end="${pageInfo.totalPage}" var="i">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=1&currentPage=${i}">${i}</a>
+                        </li>
+                    </c:forEach>
+                    <c:if test="${pageInfo.currentPage != pageInfo.totalPage}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=1&currentPage=${pageInfo.currentPage + 1}">下一页</a>
+                        </li>
+                    </c:if>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=1&currentPage=${pageInfo.totalPage}"
+                           aria-label="Next">尾页</a></li>
                 </ul>
             </div><!--底部分页栏-->
         </div><!--pro-left/-->
@@ -83,7 +98,7 @@
         <div class="pro-right">
             <h2 class="right-title">推荐房源</h2>
             <div class="right-pro">
-                <c:forEach var="random_house" items="${randomHouses}">
+                <c:forEach var="randomHouse" items="${randomHouses}">
                     <dl>
                         <dt><a href="/house/todetails.do?house_id=${randomHouse.houseId}"><img
                                 src="http://image.cxhit.com/${randomHouse.houseHeadimg}"

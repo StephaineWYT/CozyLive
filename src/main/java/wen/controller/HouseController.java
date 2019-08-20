@@ -49,7 +49,7 @@ public class HouseController {
 
         List<HouseView> randomHouses = houseService.searchThreeRandomView(houseType);
         ModelAndView mv = new ModelAndView();
-        mv.addObject("houses", pageInfo.getLists());
+        mv.addObject("pageInfo", pageInfo);
         mv.addObject("randomHouses", randomHouses);
 
         if (houseType == 0) {
