@@ -73,7 +73,7 @@
                 <a href="${pageContext.request.contextPath}/house/searchHouseViewByType.do?houseType=2&currentPage=1">租房</a>
             </li>
             <li class="zhiding"><a href="#">指定购房</a></li>
-            <li><a href="#">发布房源</a></li>
+            <li><a href="${pageContext.request.contextPath}/house/releaseHouse.do">发布房源</a></li>
             <li><a href="#">公告中心</a></li>
             <li><a href="#">关于我们</a></li>
             <div class="clears"></div>

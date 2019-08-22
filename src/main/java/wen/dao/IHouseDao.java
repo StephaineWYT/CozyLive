@@ -1,5 +1,6 @@
 package wen.dao;
 
+import wen.pojo.House;
 import wen.pojo.HouseView;
 
 import java.util.HashMap;
@@ -15,4 +16,6 @@ public interface IHouseDao {
     List<HouseView> searchHouseViewByTypeAndPage(HashMap<String, Object> map);
 
     HouseView searchDetailByHouseId(int houseId);
+
+    void postHouse(House house);
 }

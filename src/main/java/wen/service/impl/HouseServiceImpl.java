@@ -1,6 +1,7 @@
 package wen.service.impl;
 
 import wen.dao.IHouseDao;
+import wen.pojo.House;
 import wen.pojo.HouseView;
 import wen.pojo.PageInfo;
 import wen.service.IHouseService;
@@ -53,5 +54,10 @@ public class HouseServiceImpl implements IHouseService {
     @Override
     public HouseView searchDetailByHouseId(int houseId) {
         return houseDao.searchDetailByHouseId(houseId);
+    }
+
+    @Override
+    public void postHouse(House house) {
+        houseDao.postHouse(house);
     }
 }
